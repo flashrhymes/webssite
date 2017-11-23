@@ -1,0 +1,50 @@
+﻿@using websites.model1;
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/Public/img/@ViewBag.Home.Image')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>@ViewBag.Home.Title</h1>
+                    <span class="subheading">@ViewBag.Home.Text</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            @foreach (Post item in ViewBag.Post)
+            {
+                <div class="post-preview">
+                    <a href="@Url.Action("Post","Home" , new {Id = item.Id })">
+                        <h2 class="post-title">
+                           @item.Title
+                        </h2>
+                        <h3 class="post-subtitle">
+                           @item.Description
+                        </h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#">Start Bootstrap</a>
+                        on @item.Date.Value.ToString("MMMM dd,yyyy")
+                    </p>
+                </div>
+                <hr>
+            }
+            
+           
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
